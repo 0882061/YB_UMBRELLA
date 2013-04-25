@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN" 
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<include file="struts-default.xml" />
+	<package name="default" extends="struts-default">
+		<interceptors>
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="params" />
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="chain" />
+			</interceptor-stack>
+
+			<interceptor-stack name="validationStack">
+				<interceptor-ref name="defaultStack" />
+				<interceptor-ref name="validation" />
+				<interceptor-ref name="workflow" />
+			</interceptor-stack>
+		</interceptors>
+
+		<default-interceptor-ref name="defaultStack" />
+
+		<global-results>
+			<result name="exception" type="dispatcher">/exception.jsp</result>
+		</global-results>
+	</package>
+
+	<include file="struts/mapping-index.xml" />
+	<include file="struts/customer/mapping-security.xml" />
+	<include file="struts/customer/mapping-aboutUs.xml" />
+	<include file="struts/customer/mapping-product.xml" />
+	<include file="struts/customer/mapping-contactUs.xml" />
+	<include file="struts/customer/mapping-account.xml" />
+	<include file="struts/customer/mapping-cart.xml" />
+	<include file="struts/mapping-sample.xml" />
+</struts>

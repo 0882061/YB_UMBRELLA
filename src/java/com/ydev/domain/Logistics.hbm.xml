@@ -1,0 +1,17 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="Logistics" table="UM_LOGISTICS">
+		<cache usage="read-write" />
+		<id name="id" column="L_ID"  type="string"   length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="province" column="L_PROVINCE" type="string" length="30"/>
+		<property name="city" column="L_CITY" type="string" length="30"/>
+		<property name="ca" column="L_CA" type="string" length="30"/>
+		<property name="type" column="L_TYPE" type="integer" />
+		<property name="price" column="L_PRICE" type="float"  precision="10" scale="2"/>
+		<property name="memo" column="L_MEMO" type="string" length="40"/>
+	</class>
+</hibernate-mapping>

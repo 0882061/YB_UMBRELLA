@@ -1,0 +1,16 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="OrderProduct" table="UM_ORDER_PRODUCT">
+		<cache usage="read-write" />
+		<id name="id" column="ID"  type="string"  length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="oId" column="O_ID" type="string" length="32" />
+		<property name="oNum" column="O_NUM" type="integer" />
+		
+		<many-to-one name="umColor" column="OP_COLOR"  class="UMColor"/>
+		<many-to-one name="pdt" column="P_ID"  class="Product"/>
+	</class>
+</hibernate-mapping>

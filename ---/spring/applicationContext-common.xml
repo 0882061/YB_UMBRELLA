@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="userManagerImpl" class="com.ydev.service.sample.impl.UserManagerImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean id="userManager" parent="baseTxProxy">
+		<property name="target" ref="userManagerImpl" />
+	</bean>
+</beans>

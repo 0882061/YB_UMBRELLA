@@ -1,0 +1,24 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="Member" table="UM_MEMBER">
+		<cache usage="read-write" />
+		<id name="id" column="M_ID"   type="string"   length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="password" column="M_PASSWD" type="string" length="15" />
+		<property name="telephone" column="M_TEL" type="string" length="15" />
+		<property name="address" column="M_ADDR" type="string" length="100" />
+		<property name="email" column="M_EMAIL" type="string" length="33" />
+		<property name="tAccout" column="M_ACCOUT" type="string" length="50"/>
+		<property name="status" column="M_STATUS" type="integer" />
+		<property name="integral" column="M_INTEGRAL" type="integer" />
+		
+		<bag name="orders" cascade="all" inverse="false">
+			<key column="O_MEM_ID" />
+			<one-to-many class="UMOrder"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>

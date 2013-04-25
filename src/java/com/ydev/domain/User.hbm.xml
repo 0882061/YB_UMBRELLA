@@ -1,0 +1,14 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="User" table="Y_USER">
+		<cache usage="read-write" />
+		<id name="id" column="USER_ID"  type="string"   length="32">
+			<generator class="increment"></generator>
+		</id>
+		<property name="name" column="USER_NAME" type="string" length="50" />
+		<property name="sex" column="USER_SEX" type="integer" length="2" />
+		<property name="sysUser" column="SYS_USER" type="boolean" length="2" />
+	</class>
+</hibernate-mapping>

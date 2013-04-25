@@ -1,0 +1,31 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="UMOrder" table="UM_ORDERS">
+		<cache usage="read-write" />
+		<id name="id" column="O_ID"   type="string"  length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="consignee" column="O_CONSIGNEE" type="string" length="20" />
+		<property name="ordDate" column="O_DATE" type="date" />
+		<property name="address" column="O_ADDR" type="string" length="100" />
+		<property name="postNo" column="O_POST_NO" type="string" length="10" />
+		<property name="aom" column="O_AOM" type="float" precision="10" scale="2"/>
+		<property name="freight" column="O_FREIGHT" type="float" precision="10" scale="2" />
+		<property name="phoneNo" column="O_PHONE_NO" type="string" length="15" />
+		<property name="tAccout" column="O_ACCOUT" type="string" length="50" />
+		<property name="ordStatus" column="O_ORD_STATUS" type="integer" />
+		<property name="sendStatus" column="O_SEND_STATUS" type="integer" />
+		<property name="payStatus" column="O_PAY_STATUS" type="integer" />
+		<property name="memo" column="O_MEMO" type="string" length="40" />
+		
+		<many-to-one name="umMem" column="O_MEM_ID"  class="Member"/>
+		
+		<bag name="orpts" cascade="all" inverse="true" table="UM_ORDER_PRODUCT">
+			<key column="O_ID" />
+			<one-to-many class="OrderProduct"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>

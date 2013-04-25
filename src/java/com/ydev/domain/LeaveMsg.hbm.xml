@@ -1,0 +1,17 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="LeaveMsg" table="UM_LEAVE_MSG">
+		<cache usage="read-write" />
+		<id name="id" column="LM_ID"  type="string"  length="32" >
+			<generator class="uuid"></generator>
+		</id>
+		<property name="lmDate" column="LM_DATE" type="date" />
+		<property name="content" column="LM_CONTENT" type="clob" length="2" />
+		<property name="from" column="LM_FROM" type="string" length="33" />
+		<property name="topic" column="LM_TOPIC" type="string" length="50" />
+		<property name="status" column="LM_STATUS"  type="integer" />
+		<property name="memo" column="LM_MEMO" type="string" length="40"/>
+	</class>
+</hibernate-mapping>

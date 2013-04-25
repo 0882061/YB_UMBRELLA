@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="sample" extends="default" namespace="/sample">
+		<action name="viewSample" class="com.ydev.action.sample.ViewSample">
+			<result name="success" type="dispatcher">/sample/viewSample.jsp</result>
+		</action>
+		<action name="sample" class="com.ydev.action.sample.Sample">
+			<result name="success" type="dispatcher">/sample/sample.jsp</result>
+			<result name="error" type="dispatcher">/sample/sampleError.jsp</result>
+		</action>
+	</package>
+
+	<!-- json -->
+	<package name="sampleJson" extends="json-default" namespace="/sampleJson">
+		<action name="ajaxListUser" class="com.ydev.action.sample.AjaxListUser" method="listUsers">
+			<result type="json">
+				<!-- <param name="root">userList[0]</param> -->
+				<!-- <param name="excludeProperties">test</param> -->
+				<!-- excludes -->
+				<!-- <param name="includeProperties">myInt</param> includes -->
+				<!-- <param name="includeProperties">^tes*</param> -->
+				 
+				<!-- <param name="includeProperties">test</param> -->
+				<param name="excludeNullProperties">true</param>
+				<param name="wrapPrefix">/*</param>
+				<param name="wrapSuffix">*/</param>
+				<param name="statusCode">200</param>
+				<param name="noCache">true</param>
+				<param name="contentType">application/json</param>
+				<param name="enableGZIP">true</param>
+				<!-- <param name="prefix">true</param> -->
+			</result>
+		</action>
+	</package>
+</struts>

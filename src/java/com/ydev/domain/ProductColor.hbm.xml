@@ -1,0 +1,17 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="ProductColor" table="UM_PRODUCT_COLOR">
+		<cache usage="read-write" />
+		<id name="pcId" column="PC_ID"  type="string"   length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="picPath" column="PIC_PATH" type="string" length="50" />
+		<property name="num" column="NUM" type="integer" />
+		<property name="memo" column="MEMO" type="string" length="40" />
+		
+		<many-to-one name="umColor" column="C_ID"  class="UMColor"/>
+		<many-to-one name="pdt" column="P_ID"  class="Product"/>
+	</class>
+</hibernate-mapping>

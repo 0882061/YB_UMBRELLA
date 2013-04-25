@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="YB_UMBRELLA_BUILD" basedir="." default="UM_WAR">
+	<property file="Common.properties" />
+	<property name="db.con.file" value="${db.type}" />
+	<property file="${db.con.file}.properties" />
+
+	<property name="project.root.dir" value="../" />
+	<property name="src.dir" value="${project.root.dir}/src" />
+	<property name="src.conf.dir" value="${src.dir}/conf" />
+	<property name="src.java.dir" value="${src.dir}/java" />
+	<property name="src.test.dir" value="${src.dir}/test" />
+
+	<property name="lib.dir" value="${project.root.dir}/lib" />
+
+	<property name="build.dir" value="${project.root.dir}/build" />
+	<property name="build.classes.dir" value="${build.dir}/classes" />
+	<property name="build.dist.dir" value="${build.dir}/dist" />
+	<property name="build.conf.dir" value="${build.dir}/conf" />
+	<property name="build.sql.dir" value="${build.dir}/sql" />
+
+	<property name="WebRoot.dir" value="${project.root.dir}/WebRoot" />
+	<property name="WEB_INF.dir" value="${WebRoot.dir}/WEB-INF" />
+	<property name="WEB_INF.classes.dir" value="${WEB_INF.dir}/classes" />
+	<property name="WEB_INF.lib.dir" value="${WEB_INF.dir}/lib" />
+
+	<path id="project.classpath">
+		<fileset dir="${lib.dir}">
+			<!--<include name="**/*.jar"/>-->
+			<exclude name="servlet/*.jar" />
+		</fileset>
+	</path>
+
+	<path id="schemadb.classpath">
+		<path refid="project.classpath" />
+		<dirset dir="${src.java.dir}" />
+	</path>
+
+	<target name="compile">
+		<echo>开始编译Java文件</echo>
+		<mkdir dir="${build.classes.dir}" />
+		<javac srcdir="${src.java.dir}" destdir="${build.classes.dir}" includeantruntime="false" >
+			<classpath refid="project.classpath" />
+		</javac>
+		<echo>结束编译Java文件</echo>
+		<antcall target="copy_conf" />
+	</target>
+
+	<target name="copy_conf">
+		<echo>开始拷贝配置文件</echo>
+		<copy todir="${build.classes.dir}">
+			<fileset dir="${src.java.dir}" includes="**/*.xml,**/*.properties,**/*.txt,**/*.ico" />
+			<fileset dir="${src.conf.dir}" includes="**/*.xml,**/*.properties,**/*.txt,**/*.ico" />
+		</copy>
+		<antcall target="replace_conf"/>
+		<echo>结束拷贝配置文件</echo>
+	</target>
+
+	<target name="replace_conf" description="替换配置文件">
+		<echo>开始替换配置文件</echo>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{hibernate.dialect}" value="${hibernate.dialect}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{hibernate.show_sql}" value="${hibernate.show_sql}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{hibernate.default_batch_size}" value="${hibernate.default_batch_size}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{hibernate.cache.use_second_level_cache}" value="${hibernate.cache.use_second_level_cache}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.driver}" value="${jdbc.driver}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.url}" value="${jdbc.url}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.userid}" value="${jdbc.userid}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.password}" value="${jdbc.password}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.maxActive}" value="${jdbc.maxActive}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.maxIdle}" value="${jdbc.maxIdle}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.maxWait}" value="${jdbc.maxWait}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.logAbandoned}" value="${jdbc.logAbandoned}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.removeAbandoned}" value="${jdbc.removeAbandoned}"/>
+		<replace file="${build.classes.dir}/spring/applicationContext-hibernate.xml" encoding="UTF-8"  token="{jdbc.removeAbandonedTimeout}" value="${jdbc.removeAbandonedTimeout}"/>
+		<echo>结束替换配置文件</echo>
+	</target>
+
+	<target name="UM_WAR" depends="compile">
+		<echo>开始打包war档 ybase.war</echo>
+		<war destfile="${build.dist.dir}/umb.war" webxml="${WEB_INF.dir}/web.xml" description="正在打包WAR档">
+			<fileset dir="${WebRoot.dir}" includes="**/*.jsp,**/*.js,**/*.css,**/*.html,**/*.htm,**/*.txt" />
+			<lib dir="${lib.dir}" excludes="servlet/*.jar" />
+			<classes dir="${build.classes.dir}" />
+		</war>
+		<delete dir="${build.classes.dir}" />
+		<echo>结束打包war档 ybase.war</echo>
+	</target>
+
+	<target name="create_schema" depends="compile">
+		<echo>开始生成DB Schema</echo>
+		<taskdef name="schemaexport" classname="org.hibernate.tool.hbm2ddl.SchemaExportTask">
+			<classpath refid="schemadb.classpath" />
+		</taskdef>
+		<schemaexport config="${build.conf.dir}/hibernate.cfg.xml" quiet="false" text="true" delimiter=";" output="${build.sql.dir}/um_db_schema.sql">
+		</schemaexport>
+		<delete dir="${build.classes.dir}" />
+		<echo>生成DB Schema成功</echo>
+	</target>
+
+	<target name="exec_schema" description="create all tables in database" depends="create_schema">
+		<echo>开始创建数据库</echo>
+		<sql  driver="${jdbc.driver}" password="${jdbc.password}" url="${jdbc.url}" userid="${jdbc.userid}" encoding="utf8" print="no" onerror="continue">
+			<transaction src="${build.sql.dir}\um_db_schema.sql" />
+			<transaction src="${build.sql.dir}\${db.type}\um_color.sql" />
+			<transaction src="${build.sql.dir}\${db.type}\um_member.sql" />
+			<transaction src="${build.sql.dir}\${db.type}\um_product.sql" />
+			<transaction src="${build.sql.dir}\${db.type}\um_shop.sql" />
+			<transaction src="${build.sql.dir}\${db.type}\um_product_color.sql" />
+			<classpath path="${lib.dir}\jdbc\mysql-connector-java-5.0.8-bin.jar" />
+		</sql>
+		<echo>结束创建数据库</echo>
+	</target>
+
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="Shop" table="UM_SHOP">
+		<cache usage="read-write" />
+		<id name="name" column="S_NAME"  type="string"   length="32">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="address" column="S_ADDR" type="string" length="100"/>
+		<property name="introduce" column="S_INTRO" type="clob"/>
+		<property name="memo" column="S_MEMO" type="string" length="50" />
+	</class>
+</hibernate-mapping>

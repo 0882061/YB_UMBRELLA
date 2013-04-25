@@ -1,0 +1,16 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="SysUser" table="UM_USER">
+		<cache usage="read-write" />
+		<id name="id" column="U_ID"   type="string"  length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="passwd" column="U_PASSWD" type="string" length="15"/>
+		<property name="role" column="U_ROLE" type="string" length="15" />
+		<property name="email" column="U_EMAIL" type="string" length="33" />
+		<property name="status" column="U_STATUS" type="integer" />
+		<property name="logDate" column="U_LGD" type="date" />
+	</class>
+</hibernate-mapping>

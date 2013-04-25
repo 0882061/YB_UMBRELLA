@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+  "-//Hibernate/Hibernate Configuration DTD 3.0//EN" 
+  "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <mapping resource="com/ydev/domain/LeaveMsg.hbm.xml"  />
+        <mapping resource="com/ydev/domain/Logistics.hbm.xml"  />
+        <mapping resource="com/ydev/domain/Member.hbm.xml"  />
+        <mapping resource="com/ydev/domain/OrderProduct.hbm.xml"  />
+        <mapping resource="com/ydev/domain/Product.hbm.xml"  />
+        <mapping resource="com/ydev/domain/ProductColor.hbm.xml"  />
+        <mapping resource="com/ydev/domain/Purchase.hbm.xml"  />
+        <mapping resource="com/ydev/domain/Shop.hbm.xml"  />
+        <mapping resource="com/ydev/domain/SysUser.hbm.xml"  />
+        <mapping resource="com/ydev/domain/UMColor.hbm.xml"  />
+        <mapping resource="com/ydev/domain/UMOrder.hbm.xml"  />
+   </session-factory>
+</hibernate-configuration>

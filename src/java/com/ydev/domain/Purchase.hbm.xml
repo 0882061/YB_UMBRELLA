@@ -1,0 +1,19 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="Purchase" table="UM_PURCHASE">
+		<cache usage="read-write" />
+		<id name="id" column="PU_ID"  type="string"   length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="orginal" column="PU_ORGINAL" type="string" length="100" />
+		<property name="puDate" column="PU_DATE" type="date" />
+		<property name="merchant" column="PU_MERCHANT" type="string" length="100" />
+		<property name="puNum" column="PU_NUM" type="integer" />
+		<property name="memo" column="PU_MEMO" type="string" length="40" />
+		
+		<many-to-one name="umColor" column="PU_COLOR"  class="UMColor"/>
+		<many-to-one name="pdt" column="P_ID" class="Product" />
+	</class>
+</hibernate-mapping>

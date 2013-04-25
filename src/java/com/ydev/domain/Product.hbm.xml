@@ -1,0 +1,30 @@
+<?xml version="1.0"  encoding='UTF-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ydev.domain">
+	<class name="Product" table="UM_PRODUCT">
+		<cache usage="read-write" />
+		<id name="id" column="P_ID"   type="string"  length="32">
+			<generator class="uuid"></generator>
+		</id>
+		<property name="type" column="P_TYPE" type="string" length="40" />
+		<property name="salePrice" column="P_SALE_PRICE" type="float" precision="10" scale="2"/>
+		<property name="promo" column="P_PROMO" type="string" length="10" />
+		<property name="fenew" column="P_FENEW" type="integer" />
+		<property name="picPath" column="P_PIC_PATH" type="string" length="50"/>
+		<property name="status" column="P_STATUS" type="integer" />
+		<property name="desc" column="P_DESC" type="string" length="100" />
+		<property name="memo" column="P_MEMO" type="string" length="50" />
+		
+		<bag name="prcors" cascade="all" inverse="true"  table="UM_PRODUCT_COLOR">
+			<key column="P_ID" />
+			<one-to-many class="ProductColor"/>
+		</bag>
+		
+		<bag name="purcs" cascade="all" inverse="true"  table="UM_PURCHASE">
+			<key column="PU_ID" />
+			<one-to-many class="Purchase"/>
+		</bag>
+		
+	</class>
+</hibernate-mapping>

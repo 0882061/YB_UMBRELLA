@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="contactUs" extends="default" namespace="/contactUs">
+		<action name="viewContactUs" class="com.ydev.action.customer.contactUs.ViewContactUs">
+			<result name="success" type="dispatcher">/customer/contactUs/viewContactUs.jsp</result>
+		</action>
+	</package>
+</struts>
