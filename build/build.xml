@@ -105,6 +105,7 @@
 			<transaction src="${build.sql.dir}\${db.type}\um_product.sql" />
 			<transaction src="${build.sql.dir}\${db.type}\um_shop.sql" />
 			<transaction src="${build.sql.dir}\${db.type}\um_product_color.sql" />
+			<transaction src="${build.sql.dir}\${db.type}\um_purchase.sql" />
 			<classpath path="${lib.dir}\jdbc\mysql-connector-java-5.0.8-bin.jar" />
 		</sql>
 		<echo>结束创建数据库</echo>
