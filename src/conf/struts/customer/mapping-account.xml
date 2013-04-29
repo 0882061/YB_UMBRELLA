@@ -11,5 +11,32 @@
 		<action name="viewAccountRegister" class="com.ydev.action.customer.account.ViewAccountRegister">
 			<result name="success" type="dispatcher">/customer/account/viewAccountRegister.jsp</result>
 		</action>
+		
+		<action name="saveMember" class="com.ydev.action.customer.account.SaveMember">
+			<result name="success" type="dispatcher">/customer/account/viewAccountRegister.jsp</result>
+			<result name="error" type="dispatcher">/customer/account/viewAccountRegister.jsp</result>
+		</action>
+	</package>
+	
+	<package name="accountJson" extends="json-default" namespace="/accountJson">
+		<action name="ajaxRequestMemUnique" class="com.ydev.action.customer.account.AjaxRequestMemUnique" method="execMemUnique">
+			<result type="json">
+				<!-- <param name="root">userList[0]</param> -->
+				<!-- <param name="excludeProperties">test</param> -->
+				<!-- excludes -->
+				<!-- <param name="includeProperties">myInt</param> includes -->
+				<!-- <param name="includeProperties">^tes*</param> -->
+				 
+				<!-- <param name="includeProperties">test</param> -->
+				<param name="excludeNullProperties">true</param>
+				<param name="wrapPrefix">/*</param>
+				<param name="wrapSuffix">*/</param>
+				<param name="statusCode">200</param>
+				<param name="noCache">true</param>
+				<param name="contentType">application/json</param>
+				<param name="enableGZIP">true</param>
+				<!-- <param name="prefix">true</param> -->
+			</result>
+		</action>
 	</package>
 </struts>
