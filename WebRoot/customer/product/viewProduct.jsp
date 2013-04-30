@@ -13,90 +13,21 @@
 			</span>商品种类
 		</div>
 		<div class="new_products">
-			<div class="new_prod_box">
-				<a href="details.html">二折伞</a>
-				<div class="new_prod_bg">
-					<a href="<%=request.getContextPath()%>/product/viewProductDetail.action"><img src="<%=request.getContextPath()%>/images/customer/thumb1.gif" alt="" title="" class="thumb" border="0" />
-					</a>
+			<s:iterator value="pros" id="pro">
+				<div class="new_prod_box">
+					<a href="details.html"><s:property value="#pro.type"/></a>
+					<div class="new_prod_bg">
+						<a href="<%=request.getContextPath()%>/product/viewProductDetail.action"><img src="<%=request.getContextPath()%>/upload/<s:property value="#pro.picPath"/>" alt="" title="" class="thumb" border="0"  width="112"  height="100" />
+						</a>
+					</div>
 				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">三折伞</a>
-				<div class="new_prod_bg">
-					<span class="new_icon"><img src="<%=request.getContextPath()%>/images/customer/new_icon.gif" alt="" title="" />
-					</span> <a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb2.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">四折伞</a>
-				<div class="new_prod_bg">
-					<span class="new_icon"><img src="<%=request.getContextPath()%>/images/customer/promo_icon.gif" alt="" title="" />
-					</span> <a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb3.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">五折伞</a>
-				<div class="new_prod_bg">
-					<a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb1.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">自动伞</a>
-				<div class="new_prod_bg">
-					<span class="new_icon"><img src="<%=request.getContextPath()%>/images/customer/promo_icon.gif" alt="" title="" />
-					</span> <a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb2.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">五折伞</a>
-				<div class="new_prod_bg">
-					<a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb3.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">铅笔伞</a>
-				<div class="new_prod_bg">
-					<span class="new_icon"><img src="<%=request.getContextPath()%>/images/customer/new_icon.gif" alt="" title="" />
-					</span> <a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb2.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">自动伞</a>
-				<div class="new_prod_bg">
-					<a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb1.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">四折伞</a>
-				<div class="new_prod_bg">
-					<a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb1.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">xxx伞</a>
-				<div class="new_prod_bg">
-					<span class="new_icon"><img src="<%=request.getContextPath()%>/images/customer/new_icon.gif" alt="" title="" />
-					</span> <a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb1.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
-			<div class="new_prod_box">
-				<a href="details.html">xxx伞</a>
-				<div class="new_prod_bg">
-					<a href="details.html"><img src="<%=request.getContextPath()%>/images/customer/thumb1.gif" alt="" title="" class="thumb" border="0" />
-					</a>
-				</div>
-			</div>
+			</s:iterator>
 			<div class="pagination">
-				<span class="disabled"><<</span><span class="current">1</span><a href="#?page=2">2</a><a href="#?page=3">3</a>…<a href="#?page=199">10</a><a href="#?page=200">11</a><a href="#?page=2">>></a>
+				<span <s:if test="page.startPage==1">class="disabled"</s:if>>...</span>
+				<s:iterator value="page.dis" id="di">
+						<a <s:if test="page.currentPage==#di">class="hoverlink"</s:if> href="<%=request.getContextPath()%>/product/viewProduct.action?status=1&curPage=<s:property value="#di"/>&dispPg=<s:property value="page.displayPage"/>&dispRs=<s:property value="page.displayRecord" />&endPg=<s:property value="page.endPage"/>&startPg=<s:property value="page.startPage"/>"  target="_self"><s:property value="#di"/></a>
+				</s:iterator>
+				<span <s:if test="page.startPage==page.lastStartPage">class="disabled"</s:if>>...</span>
 			</div>
 		</div>
 		

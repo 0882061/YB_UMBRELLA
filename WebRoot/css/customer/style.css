@@ -202,7 +202,7 @@ background:url(../../images/customer/box_top.gif) no-repeat center bottom;
 }
 .box_center{
 width:295px;
-height:auto;
+height:110px;
 background:url(../../images/customer/box_center.gif) repeat-y center;
 }
 .box_bottom{
@@ -234,6 +234,7 @@ position:absolute;
 top:0px;
 right:0px;
 z-index:200;
+overflow: hidden;
 }
 .special_icon{
 position:absolute;
@@ -387,9 +388,18 @@ position:relative;
 width:335px;
 _width:355px;
 clear:both;
-padding:10px 0 10px 0;
+padding:0px 0 0px 0;
 _padding:5px 0 5px 0;
 color:#a53d17;
+}
+
+.tip_row{
+width:335px;
+_width:355px;
+clear:both;
+padding:0px 0 15px 75px;
+_padding:5px 0 5px 0;
+color:#a53d17;	
 }
 label.contact{
 width:75px;
@@ -515,13 +525,22 @@ padding: 2px 5px 2px 5px;
 margin-right: 2px;
 border: 1px solid #ddd;
 text-decoration: none; 
-color: #990000;
 }
 div.pagination a:hover, div.pagination a:active {
+padding: 2px 5px 2px 5px;
+margin-right: 2px;
+border: 1px solid #990000;
+font-weight: bold;
+color: #fff;
+background-color: #990000;
+}
+
+.hoverlink{
 border:1px solid #990000;
 color: #fff;
 background-color: #990000;
 }
+
 div.pagination span.current {
 padding: 2px 5px 2px 5px;
 margin-right: 2px;
