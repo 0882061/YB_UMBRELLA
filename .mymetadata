@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="YB_UMBRELLA"
+  name="YB_UMBRELLA_1"
   id="myeclipse.1354774041523"
   context-root="/umb"
   j2ee-spec="6.0"
-  archive="YB_UMBRELLA.war">
+  archive="YB_UMBRELLA_1.war">
   <attributes>
     <attribute name="webrootdir" value="/WebRoot" />
   </attributes>

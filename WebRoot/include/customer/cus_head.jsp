@@ -8,10 +8,10 @@
         <div id="menu">
             <ul>
 				<li class="selected"><a href="<%=request.getContextPath()%>/index.action">首页</a>
+				</li>  
+				<li><a href="<%=request.getContextPath()%>/product/viewProduct.action?status=1&curPage=1&dispPg=10&dispRs=8">雨伞商品</a>
 				</li>
-				<li><a href="<%=request.getContextPath()%>/product/viewProduct.action">雨伞商品</a>
-				</li>
-				<li><a href="<%=request.getContextPath()%>/product/viewSpecial.action">特价礼品</a>
+				<li><a href="<%=request.getContextPath()%>/product/viewSpecial.action?status=1&curPage=1&dispPg=10&dispRs=6">特价礼品</a>
 				</li>
 				<li><a href="<%=request.getContextPath()%>/account/viewAccountLogin.action">账号</a>
 				</li>
