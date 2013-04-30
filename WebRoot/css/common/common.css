@@ -1,0 +1,36 @@
+.tab_01 {
+	color: red;
+	text-align: center;
+}
+
+.transfer {
+	width:80px;
+	position:absolute;
+	overflow:hidden;
+	top:2px;
+	left:-3px;
+	background-color: #EB3D24;
+	font: bold 25px '微软雅黑';
+	text-align: center;
+	-webkit-transform: rotate(45deg) scale(0.5); /* for Chrome || Safari */
+	-moz-transform: rotate(45deg); /* for Firefox */
+	-ms-transform: rotate(45deg); /* for IE */
+	-o-transform: rotate(45deg); /* for Opera */
+}
+
+.transfer {
+	width:80px;
+	position:absolute;
+	overflow:hidden;
+	top:-5px \9;
+	left:15px \9;
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.389, M12=-0.389,
+		M21=0.389, M22=0.389, SizingMethod='auto expand' );
+	background-color: #EB3D24;
+	font: bold 25px '微软雅黑';
+}
+
+/* WRITE YOUR CSS CODE HERE */
+.hiddenblock{
+	display:none;
+}
