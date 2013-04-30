@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
 <beans>
-
+	<bean id="configurationManager" class="com.ydev.service.security.ConfigurationManager" init-method="init">
+		<property name="appSetting">
+			<map>
+				<entry key="host.customer.base.url" value="http://localhost:9081/umb"/>
+				<entry key="host.admin.base.url" value="http://localhost:9081/umb/adminIndex"/>
+			</map>
+		</property>
+	</bean>
 </beans>
