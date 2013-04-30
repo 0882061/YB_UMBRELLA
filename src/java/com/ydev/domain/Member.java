@@ -16,7 +16,12 @@ import java.util.Set;
  */
 public class Member {
 	
+	private static final Integer MEM_STATUS_NORMAL = 1;
 	
+	private static final Integer MEM_STATUS_EXP = 0;
+
+	private static final Integer MEM_ITG_DEF = 0;
+
 	/**
 	 * 会员编号(主键)
 	 */
@@ -52,12 +57,12 @@ public class Member {
 	/**
 	 * 积分
 	 */
-	private Integer integral;
+	private Integer integral = Member.MEM_ITG_DEF;
 	
 	/**
 	 * 状态(0:异常    1:正常)
 	 */
-	private String status;
+	private Integer status = Member.MEM_STATUS_NORMAL;
 	
 	/**
 	 * 订单集合
@@ -126,11 +131,11 @@ public class Member {
 		this.integral = integral;
 	}
 
-	public String getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 

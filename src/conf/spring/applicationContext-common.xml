@@ -7,7 +7,7 @@
 
 	<bean id="userManager" parent="baseTxProxy">
 		<property name="target" ref="userManagerImpl" />
-	</bean>
+	</bean>    
 
 	<bean id="productManagerImpl" class="com.ydev.service.app.impl.ProductManagerImpl">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
@@ -15,5 +15,29 @@
 
 	<bean id="productManager" parent="baseTxProxy">
 		<property name="target" ref="productManagerImpl" />
+	</bean>
+	
+	<bean id="shopManagerImpl" class="com.ydev.service.app.impl.ShopManagerImpl" >
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean id="shopManager" parent="baseTxProxy">
+		<property name="target" ref="shopManagerImpl" />   
+	</bean>
+	
+	<bean id="purchaseManagerImpl" class="com.ydev.service.app.impl.PurchaseManagerImpl" >
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean id="purchaseManager" parent="baseTxProxy">
+		<property name="target" ref="purchaseManagerImpl" />   
+	</bean>
+	
+	<bean id="memberManagerImpl" class="com.ydev.service.app.impl.MemberManagerImpl" >
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+
+	<bean id="memberManager" parent="baseTxProxy">
+		<property name="target" ref="memberManagerImpl" />   
 	</bean>
 </beans>

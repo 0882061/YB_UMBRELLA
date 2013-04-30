@@ -4,9 +4,7 @@
 <hibernate-mapping package="com.ydev.domain">
 	<class name="Member" table="UM_MEMBER">
 		<cache usage="read-write" />
-		<id name="id" column="M_ID"   type="string"   length="32">
-			<generator class="uuid"></generator>
-		</id>
+		<id name="id" column="M_ID"   type="string"   length="32"></id>
 		<property name="password" column="M_PASSWD" type="string" length="15" />
 		<property name="telephone" column="M_TEL" type="string" length="15" />
 		<property name="address" column="M_ADDR" type="string" length="100" />

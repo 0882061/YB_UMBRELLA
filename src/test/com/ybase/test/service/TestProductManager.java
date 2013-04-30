@@ -45,6 +45,39 @@ public class TestProductManager extends BaseTestSevice {
 		assertEquals("3", product.getId());
 		assertEquals("89%", product.getPromo());	
 	}
+	
+	@Test
+	public void testGetProductsPage(){
+		List<Product> prosPage = productManager.getProductsPage(1, 0, 3);
+		assertEquals(3, prosPage.size());
+		
+		prosPage = productManager.getProductsPage(1, 4, 6);
+		assertEquals(6, prosPage.size());
+		
+		prosPage = productManager.getProductsPage(1, 5, 6);
+		assertEquals(5, prosPage.size());
+		
+		prosPage = productManager.getProductsPage(1, 0, 20);
+		assertEquals(10, prosPage.size());
+	}
+	
+	@Test
+	public void testCountProduct(){
+		int count = productManager.countProduct(1);
+		assertEquals(10, count);
+	}
+	
+	@Test
+	public void testGetProductsInSpecialPage() {
+		List<Product> specs = productManager.getProductsInSpecialPage(0, 4, 1);
+		assertEquals(3, specs.size());
+	}
+	
+	@Test
+	public void testCountProductInSpecial() {
+		int count = productManager.countProductInSpecial(1);
+		assertEquals(3, count);
+	}
 
 	public void setProductManager(IProductManager productManager) {
 		this.productManager = productManager;
