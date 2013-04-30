@@ -36,5 +36,7 @@
 	<include file="struts/customer/mapping-contactUs.xml" />
 	<include file="struts/customer/mapping-account.xml" />
 	<include file="struts/customer/mapping-cart.xml" />
+	
+	<include file="struts/customer/mapping-include.xml" />
 	<include file="struts/mapping-sample.xml" />
 </struts>
