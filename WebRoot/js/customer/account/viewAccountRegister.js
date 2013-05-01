@@ -1,5 +1,6 @@
 var url_request_memUnique = context_path + "/accountJson/ajaxRequestMemUnique.action";
 $j(document).ready(function(){
+	$j("#userName").focus();
 	$j.formValidator.initConfig({
 		formID:"accountRegisterForm",
 		debug:false,
@@ -119,6 +120,9 @@ $j(document).ready(function(){
 		},
 		onError:"\u683c\u5f0f\u932f\u8aa4"
 	})
+	
+	$j(":checkbox[name='agreeMentChk']").formValidator({tipID:"tipAgreeMentChk",onShow:"\u8bf7\u9605\u8bfb\u6ce8\u518c\u6761\u6b3e",onFocus:"",onCorrect:""}).inputValidator({min:1,onError:"\u8bf7\u9605\u8bfb\u6ce8\u518c\u6761\u6b3e"});
+	
 })
 
 function openAgreeMentWindow(){
@@ -137,4 +141,28 @@ function openAgreeMentWindow(){
 function validateAddress(){
 	alert("外部函數調用");
 	return true;
+}
+
+function alertAddMemSuccess(userName){
+	easyDialog.open({
+		container : {
+			header : '\u63d0\u793a',
+			content : '\u4f1a\u5458\u7f16\u53f7:'+userName+',\u6dfb\u52a0\u6210\u529f!',
+			yesFn : function(){return true;},
+			noFn : true,
+			drag : false
+	    }
+	  });
+}
+
+function alertAddMemError(userName){
+	easyDialog.open({
+		container : {
+			header : '\u9519\u8bef',
+			content :'\u4f1a\u5458\u7f16\u53f7:'+userName+',\u6dfb\u52a0\u5931\u8d25!',
+			yesFn : function(){return true;},
+			noFn : true,
+			drag : false
+	    }
+	  });
 }
