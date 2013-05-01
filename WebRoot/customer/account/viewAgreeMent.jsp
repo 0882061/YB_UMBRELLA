@@ -1,6 +1,5 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<%--<jsp:include page="/include/customer/page_cus_head.jsp"></jsp:include>--%>
 <!-- 商品颜色新增面板 -->
 		<div class="easyDialog_wrapper" id="regAgrPanel" style="width:900px;height:800px;">
 			<div class="easyDialog_content" style="width:900px;height:800px;">

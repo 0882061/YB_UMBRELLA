@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="/struts-tags" prefix="s"%>
-<jsp:include page="/include/customer/cus_head.jsp"></jsp:include>
+<jsp:include page="/include/customer/cus_head.jsp" />
+<script type="text/javascript" src="<%=request.getContextPath()%>/js/common/easydialog.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/js/customer/account/viewAccountRegister.js"></script>
 <div class="center_content">
 
@@ -20,7 +21,7 @@
 					<div class="form_row">
 						<label class="contact"><strong>用户名:</strong>
 						</label>
-						<input id="userName" name="mem.id" type="text" class="contact_input"/>
+						<input id="userName" name="mem.id" type="text" class="contact_input"   tabindex="1"/>
 					</div>
 					<div class="tip_row">
 						<div id="userNameTip" style="width:235px"></div>
@@ -65,7 +66,7 @@
 					<div class="form_row">
 						<label class="contact"><strong>住址:</strong>
 						</label>
-						<input type="text" id="houseAddress" name="mem.telephone" class="contact_input" />
+						<input type="text" id="houseAddress" name="mem.address" class="contact_input" />
 					</div>
 					<div class="tip_row">
 						<div id="houseAddressTip" style="width:235px"></div>
@@ -73,9 +74,12 @@
 					
 					<div class="form_row">
 						<div class="terms">
-							<input type="checkbox" name="terms" />
+							<input type="checkbox" name="agreeMentChk"  id="agreeMentChk"/>
 							我同意 <a href="#" onclick="openAgreeMentWindow();">注册条款</a>
 						</div>
+					</div>
+					<div class="tip_row">
+						<div id="tipAgreeMentChk" style="width:235px"></div>
 					</div>
 					<div class="form_row">
 						<input type="submit" class="register" value="注册" />
@@ -96,3 +100,11 @@
 </div>
 <!--end of center content-->
 <jsp:include page="/include/customer/cus_bottom.jsp"></jsp:include>
+<script type="text/javascript">
+<s:if test="alertStatus=='success'">
+	alertAddMemSuccess("<s:property value="mem.userName"/>");
+</s:if>
+<s:elseif test="alertStatus=='error'">
+	alertAddMemError("<s:property value="mem.userName"/>");
+</s:elseif>
+</script>

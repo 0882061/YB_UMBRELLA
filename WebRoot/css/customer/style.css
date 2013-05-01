@@ -49,25 +49,25 @@ background:url(../../images/customer/header.jpg) no-repeat center;
 padding:0 0 0 30px;
 }
 /*-----------------------------menu-------------------*/
-#menu{
+#cmenu{
 width:628px;
 height:41px;
 margin:55px 0 0 26px;
 background:url(../../images/customer/menu_bg.jpg) no-repeat center;
 }
-#menu ul{
+#cmenu ul{
 display:block;
 list-style:none;
 padding:9px 0 0 10px;
 margin:0px;
 }
-#menu ul li{
+#cmenu ul li{
 display:inline;
 padding:0px;
 margin:0px;
 height:27px;
 }
-#menu ul li a{
+#cmenu ul li a{
 height:27px;
 display:block;
 padding:0px 10px 0 10px;
@@ -80,7 +80,7 @@ color:#fff;
 font-size:13px;
 line-height:27px;
 }
-#menu ul li.selected a{
+#cmenu ul li.selected a{
 height:27px;
 display:block;
 padding:0px 10px 0 10px;
@@ -93,7 +93,7 @@ font-size:13px;
 line-height:27px;
 background:url(../../images/customer/menu_bt_bg.gif) repeat-x center;
 }
-#menu ul li a:hover{
+#cmenu ul li a:hover{
 background:url(../../images/customer/menu_bt_bg.gif) repeat-x center;
 }
 /*----------------crumb_nav------------------*/
@@ -575,4 +575,13 @@ padding:0 5px 0 5px;
 color:#afaeaf;
 }
 
+.logspan{
+	float:right;
+	padding-top:5px;
+	padding-right:30px;
+}
+
+.logspan a{
+	cursor: pointer;
+}
 
