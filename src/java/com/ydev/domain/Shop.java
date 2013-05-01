@@ -5,8 +5,7 @@
  */
 package com.ydev.domain;
 
-import com.mysql.jdbc.Clob;
-
+import java.sql.Clob;
 /**
  * 商店信息
  * 

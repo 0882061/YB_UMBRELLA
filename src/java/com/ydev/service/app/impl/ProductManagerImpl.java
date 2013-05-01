@@ -12,7 +12,6 @@ import org.hibernate.Session;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.sun.istack.internal.FinalArrayList;
 import com.ydev.domain.Product;
 import com.ydev.service.app.IProductManager;
 import com.ydev.util.CollectionsUtil;

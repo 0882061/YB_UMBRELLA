@@ -1,21 +1,11 @@
-/**
- * Created By: YBASE
- * Created Date: 2013-4-3 下午5:17:17
- * Author: Tom Yang
- */
-package com.ydev.action.customer.aboutUs;
+package com.ydev.action.customer.include;
 
-import com.opensymphony.xwork2.ActionSupport;
+import com.ydev.action.base.BaseAction;
 import com.ydev.domain.Shop;
 import com.ydev.service.app.IShopManager;
 import com.ydev.util.ClobUtil;
 
-/**
- * @author Tom Yang
- * @version 1.0
- */
-public class ViewAboutUs extends ActionSupport{
-	
+public class AjaxRequestShop extends BaseAction {
 
 	private IShopManager shopManager;
 	
@@ -23,7 +13,7 @@ public class ViewAboutUs extends ActionSupport{
 	
 	private String introduce;
 	
-	public String execute(){
+	public String execResult(){
 		shop = shopManager.getShop();
 		introduce = ClobUtil.clobToString(shop.getIntroduce());
 		return SUCCESS;

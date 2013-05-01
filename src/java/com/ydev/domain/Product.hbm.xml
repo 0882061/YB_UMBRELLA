@@ -22,7 +22,7 @@
 		</bag>
 		
 		<bag name="purcs" cascade="all" inverse="true"  table="UM_PURCHASE">
-			<key column="PU_ID" />
+			<key column="P_ID" />
 			<one-to-many class="Purchase"/>
 		</bag>
 		
